@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_atomic_design/presentation/bloc/register/register_cubit.dart';
 import 'package:form_atomic_design/presentation/widgets/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -7,11 +9,15 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Nuevo usuario'),
-      ),
-      body: const _RegisterView(),
-    );
+        appBar: AppBar(
+          title: const Text('Nuevo usuario'),
+        ),
+        body: BlocProvider(
+          create: (context) => RegisterCubit(),
+          child: const _RegisterView(),
+        )
+        //const _RegisterView(),
+        );
   }
 }
 
